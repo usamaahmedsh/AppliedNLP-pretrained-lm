@@ -1,0 +1,190 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: test_load_model_a
+      id: test_load_model_a
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_load_model_a
+        setup-command: pip install -r requirements.txt
+        command: pytest test.py -k 'test_load_model_a'
+        timeout: 10
+        max-score: 10
+    - name: test_preprocess_data_a
+      id: test_preprocess_data_a
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_preprocess_data_a
+        setup-command: ''
+        command: pytest test.py -k 'test_preprocess_data_a'
+        timeout: 10
+        max-score: 10
+    - name: test_create_training_arguments_a
+      id: test_create_training_arguments_a
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_create_training_arguments_a
+        setup-command: ''
+        command: pytest test.py -k 'test_create_training_arguments_a'
+        timeout: 10
+        max-score: 10
+    - name: test_create_trainer_a
+      id: test_create_trainer_a
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_create_trainer_a
+        setup-command: ''
+        command: pytest test.py -k 'test_create_trainer_a'
+        timeout: 10
+        max-score: 10
+    - name: test_make_predictions_a
+      id: test_make_predictions_a
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_make_predictions_a
+        setup-command: ''
+        command: pytest test.py -k 'test_make_predictions_a'
+        timeout: 10
+        max-score: 10
+    - name: test_load_model_b
+      id: test_load_model_b
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_load_model_b
+        setup-command: ''
+        command: pytest test.py -k 'test_load_model_b'
+        timeout: 10
+        max-score: 10
+    - name: test_preprocess_data_b
+      id: test_preprocess_data_b
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_preprocess_data_b
+        setup-command: ''
+        command: pytest test.py -k 'test_preprocess_data_b'
+        timeout: 10
+        max-score: 10
+    - name: test_create_training_arguments_b
+      id: test_create_training_arguments_b
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_create_training_arguments_b
+        setup-command: ''
+        command: pytest test.py -k 'test_create_training_arguments_b'
+        timeout: 10
+        max-score: 10
+    - name: test_create_trainer_b
+      id: test_create_trainer_b
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_create_trainer_b
+        setup-command: ''
+        command: pytest test.py -k 'test_create_trainer_b'
+        timeout: 10
+        max-score: 10
+    - name: test_make_predictions_b
+      id: test_make_predictions_b
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_make_predictions_b
+        setup-command: ''
+        command: pytest test.py -k 'test_make_predictions_b'
+        timeout: 10
+        max-score: 10
+    - name: test_load_model_c
+      id: test_load_model_c
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_load_model_c
+        setup-command: ''
+        command: pytest test_grads.py -k 'test_load_model_c'
+        timeout: 10
+        max-score: 16
+    - name: test_load_data_c
+      id: test_load_data_c
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_load_data_c
+        setup-command: ''
+        command: pytest test_grads.py -k 'test_load_data_c'
+        timeout: 10
+        max-score: 10
+    - name: test_preprocess_data_c
+      id: test_preprocess_data_c
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_preprocess_data_c
+        setup-command: ''
+        command: pytest test_grads.py -k 'test_preprocess_data_c'
+        timeout: 10
+        max-score: 16
+    - name: test_create_training_arguments_c
+      id: test_create_training_arguments_c
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_create_training_arguments_c
+        setup-command: ''
+        command: pytest test_grads.py -k 'test_create_training_arguments_c'
+        timeout: 10
+        max-score: 16
+    - name: test_create_trainer_c
+      id: test_create_trainer_c
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_create_trainer_c
+        setup-command: ''
+        command: pytest test_grads.py -k 'test_create_trainer_c'
+        timeout: 10
+        max-score: 16
+    - name: test_make_predictions_c
+      id: test_make_predictions_c
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_make_predictions_c
+        setup-command: ''
+        command: pytest test_grads.py -k 'test_make_predictions_c'
+        timeout: 10
+        max-score: 16
+    - name: test_evaluate_c
+      id: test_evaluate_c
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_evaluate_c
+        setup-command: ''
+        command: pytest test_grads.py -k 'test_evaluate_c'
+        timeout: 10
+        max-score: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST_LOAD_MODEL_A_RESULTS: "${{steps.test_load_model_a.outputs.result}}"
+        TEST_PREPROCESS_DATA_A_RESULTS: "${{steps.test_preprocess_data_a.outputs.result}}"
+        TEST_CREATE_TRAINING_ARGUMENTS_A_RESULTS: "${{steps.test_create_training_arguments_a.outputs.result}}"
+        TEST_CREATE_TRAINER_A_RESULTS: "${{steps.test_create_trainer_a.outputs.result}}"
+        TEST_MAKE_PREDICTIONS_A_RESULTS: "${{steps.test_make_predictions_a.outputs.result}}"
+        TEST_LOAD_MODEL_B_RESULTS: "${{steps.test_load_model_b.outputs.result}}"
+        TEST_PREPROCESS_DATA_B_RESULTS: "${{steps.test_preprocess_data_b.outputs.result}}"
+        TEST_CREATE_TRAINING_ARGUMENTS_B_RESULTS: "${{steps.test_create_training_arguments_b.outputs.result}}"
+        TEST_CREATE_TRAINER_B_RESULTS: "${{steps.test_create_trainer_b.outputs.result}}"
+        TEST_MAKE_PREDICTIONS_B_RESULTS: "${{steps.test_make_predictions_b.outputs.result}}"
+        TEST_LOAD_MODEL_C_RESULTS: "${{steps.test_load_model_c.outputs.result}}"
+        TEST_LOAD_DATA_C_RESULTS: "${{steps.test_load_data_c.outputs.result}}"
+        TEST_PREPROCESS_DATA_C_RESULTS: "${{steps.test_preprocess_data_c.outputs.result}}"
+        TEST_CREATE_TRAINING_ARGUMENTS_C_RESULTS: "${{steps.test_create_training_arguments_c.outputs.result}}"
+        TEST_CREATE_TRAINER_C_RESULTS: "${{steps.test_create_trainer_c.outputs.result}}"
+        TEST_MAKE_PREDICTIONS_C_RESULTS: "${{steps.test_make_predictions_c.outputs.result}}"
+        TEST_EVALUATE_C_RESULTS: "${{steps.test_evaluate_c.outputs.result}}"
+      with:
+        runners: test_load_model_a,test_preprocess_data_a,test_create_training_arguments_a,test_create_trainer_a,test_make_predictions_a,test_load_model_b,test_preprocess_data_b,test_create_training_arguments_b,test_create_trainer_b,test_make_predictions_b,test_load_model_c,test_load_data_c,test_preprocess_data_c,test_create_training_arguments_c,test_create_trainer_c,test_make_predictions_c,test_evaluate_c
